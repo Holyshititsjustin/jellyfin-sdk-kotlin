@@ -12,6 +12,10 @@ import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 
+private const val MAX_RECONNECT_ATTEMPTS = 5
+private const val RECONNECT_DELAY_MS = 2000L
+private const val NORMAL_CLOSE_CODE = 1000
+
 public actual class SyncPlayWebSocketClient public actual constructor() {
     private var webSocket: WebSocket? = null
     private var listener: SyncPlayListener? = null
@@ -20,8 +24,8 @@ public actual class SyncPlayWebSocketClient public actual constructor() {
     private var reconnectAttempts = 0
     private var lastServerUrl: String? = null
     private var lastAuthToken: String? = null
-    private val maxReconnectAttempts = 5
-    private val reconnectDelayMs = 2000L
+    private val maxReconnectAttempts = MAX_RECONNECT_ATTEMPTS
+    private val reconnectDelayMs = RECONNECT_DELAY_MS
 
     public actual fun connect(serverUrl: String, authToken: String): Unit {
         lastServerUrl = serverUrl
@@ -73,7 +77,7 @@ public actual class SyncPlayWebSocketClient public actual constructor() {
     }
 
     public actual fun disconnect(): Unit {
-        webSocket?.close(1000, "Client disconnect")
+        webSocket?.close(NORMAL_CLOSE_CODE, "Client disconnect")
         reconnectAttempts = 0
     }
 

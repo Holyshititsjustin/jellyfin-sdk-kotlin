@@ -12,9 +12,31 @@ complexity:
     thresholdInEnums: 15
     ignoreDeprecated: true
 
+naming:
+  ConstructorParameterNaming:
+    excludes:
+      - "**/kotlin-generated/**"
+      - "**/generated/**"
+  FunctionParameterNaming:
+    excludes:
+      - "**/kotlin-generated/**"
+      - "**/generated/**"
+  VariableNaming:
+    excludes:
+      - "**/kotlin-generated/**"
+      - "**/generated/**"
+
 style:
+  MagicNumber:
+    excludes:
+      - "**/kotlin-generated/**"
+      - "**/generated/**"
   LoopWithTooManyJumpStatements:
     maxJumpCount: 6
+  MaxLineLength:
+    excludes:
+      - "**/kotlin-generated/**"
+      - "**/generated/**"
   ReturnCount:
     max: 6
   ThrowsCount:

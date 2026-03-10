@@ -9,6 +9,7 @@ import org.jellyfin.sdk.Jellyfin
  * @property wsClient The SyncPlay WebSocket client.
  * @property syncPlayManager The manager for SyncPlay group and playback events.
  */
+@Suppress("UnusedPrivateProperty")
 public class JellyfinSyncPlay(
     private val jellyfin: Jellyfin,
     private val wsClient: SyncPlayWebSocketClient

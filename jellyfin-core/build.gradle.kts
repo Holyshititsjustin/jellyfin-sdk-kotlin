@@ -1,8 +1,11 @@
+@file:Suppress("UnusedPrivateProperty")
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	alias(libs.plugins.kotlin.multiplatform)
+	alias(libs.plugins.kotlin.serialization)
 	alias(libs.plugins.dokka)
 	alias(libs.plugins.android.library)
 	// alias(libs.plugins.animalsniffer)
@@ -86,6 +89,7 @@ kotlin {
 
 		val commonTest by getting {
 			dependencies {
+				implementation(kotlin("test"))
 				implementation(libs.kotlinx.coroutines)
 				implementation(libs.kotlinx.coroutines.test)
 				implementation(libs.kotest.framework.engine)

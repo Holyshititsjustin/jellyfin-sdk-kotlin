@@ -2,6 +2,8 @@ package org.jellyfin.sdk.syncplay
 
 import org.jellyfin.sdk.Jellyfin
 
+private const val EXAMPLE_POSITION_TICKS = 123_456_789L
+
 /**
  * Example usage of SyncPlay integration in an Android app.
  *
@@ -28,7 +30,7 @@ internal fun exampleSyncPlayUsage(jellyfin: Jellyfin, serverUrl: String, authTok
     })
 
     // Example: Pause playback
-    syncPlay.syncPlayManager.pause("group-id", 123456789L)
+    syncPlay.syncPlayManager.pause("group-id", EXAMPLE_POSITION_TICKS)
 
     // Example: Leave group
     syncPlay.syncPlayManager.leaveGroup("group-id")

@@ -8,6 +8,7 @@ public final class org/jellyfin/sdk/Jellyfin {
 	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
 	public final fun getDiscovery ()Lorg/jellyfin/sdk/discovery/DiscoveryService;
 	public final fun getOptions ()Lorg/jellyfin/sdk/JellyfinOptions;
+	public final fun syncPlay (Lorg/jellyfin/sdk/syncplay/SyncPlayWebSocketClient;)Lorg/jellyfin/sdk/syncplay/JellyfinSyncPlay;
 }
 
 public final class org/jellyfin/sdk/Jellyfin$Companion {
@@ -221,5 +222,333 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$Unsupported
 	public final fun getVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/syncplay/JellyfinSyncPlay {
+	public fun <init> (Lorg/jellyfin/sdk/Jellyfin;Lorg/jellyfin/sdk/syncplay/SyncPlayWebSocketClient;)V
+	public final fun connect (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/syncplay/SyncPlayListener;)V
+	public final fun disconnect ()V
+	public final fun getSyncPlayManager ()Lorg/jellyfin/sdk/syncplay/SyncPlayManager;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayError : org/jellyfin/sdk/syncplay/SyncPlayMessage {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlayError$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/syncplay/SyncPlayError;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/syncplay/SyncPlayError;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/syncplay/SyncPlayError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getErrorMessage ()Ljava/lang/String;
+	public fun getMessageType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/jellyfin/sdk/syncplay/SyncPlayError$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/syncplay/SyncPlayError$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/syncplay/SyncPlayError;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/syncplay/SyncPlayError;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayError$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayGroupUpdate : org/jellyfin/sdk/syncplay/SyncPlayMessage {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlayGroupUpdate$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;)Lorg/jellyfin/sdk/syncplay/SyncPlayGroupUpdate;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/syncplay/SyncPlayGroupUpdate;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;ILjava/lang/Object;)Lorg/jellyfin/sdk/syncplay/SyncPlayGroupUpdate;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGroupId ()Ljava/lang/String;
+	public fun getMessageType ()Ljava/lang/String;
+	public final fun getNowPlayingItem ()Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;
+	public final fun getUsers ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/jellyfin/sdk/syncplay/SyncPlayGroupUpdate$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/syncplay/SyncPlayGroupUpdate$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/syncplay/SyncPlayGroupUpdate;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/syncplay/SyncPlayGroupUpdate;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayGroupUpdate$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayJoinGroup : org/jellyfin/sdk/syncplay/SyncPlayMessage {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlayJoinGroup$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/syncplay/SyncPlayJoinGroup;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/syncplay/SyncPlayJoinGroup;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/syncplay/SyncPlayJoinGroup;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGroupId ()Ljava/lang/String;
+	public fun getMessageType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/jellyfin/sdk/syncplay/SyncPlayJoinGroup$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/syncplay/SyncPlayJoinGroup$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/syncplay/SyncPlayJoinGroup;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/syncplay/SyncPlayJoinGroup;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayJoinGroup$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayLeaveGroup : org/jellyfin/sdk/syncplay/SyncPlayMessage {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlayLeaveGroup$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/syncplay/SyncPlayLeaveGroup;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/syncplay/SyncPlayLeaveGroup;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/syncplay/SyncPlayLeaveGroup;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGroupId ()Ljava/lang/String;
+	public fun getMessageType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/jellyfin/sdk/syncplay/SyncPlayLeaveGroup$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/syncplay/SyncPlayLeaveGroup$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/syncplay/SyncPlayLeaveGroup;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/syncplay/SyncPlayLeaveGroup;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayLeaveGroup$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class org/jellyfin/sdk/syncplay/SyncPlayListener {
+	public abstract fun onClosed (ILjava/lang/String;)V
+	public abstract fun onError (Ljava/lang/Throwable;)V
+	public abstract fun onMessage (Lorg/jellyfin/sdk/syncplay/SyncPlayMessage;)V
+	public abstract fun onOpen ()V
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayManager {
+	public fun <init> (Lorg/jellyfin/sdk/syncplay/SyncPlayWebSocketClient;)V
+	public final fun createGroup (Ljava/lang/String;)V
+	public final fun joinGroup (Ljava/lang/String;)V
+	public final fun leaveGroup (Ljava/lang/String;)V
+	public final fun pause (Ljava/lang/String;J)V
+	public final fun seek (Ljava/lang/String;J)V
+	public final fun unpause (Ljava/lang/String;J)V
+}
+
+public abstract class org/jellyfin/sdk/syncplay/SyncPlayMessage {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlayMessage$Companion;
+	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public abstract fun getMessageType ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lorg/jellyfin/sdk/syncplay/SyncPlayMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayMessage$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem$Companion;
+	public fun <init> (Ljava/lang/String;JZ)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()J
+	public final fun component3 ()Z
+	public final fun copy (Ljava/lang/String;JZ)Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;Ljava/lang/String;JZILjava/lang/Object;)Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIsPaused ()Z
+	public final fun getItemId ()Ljava/lang/String;
+	public final fun getPositionTicks ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayNowPlayingItem$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayPause : org/jellyfin/sdk/syncplay/SyncPlayMessage {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlayPause$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;J)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()J
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;J)Lorg/jellyfin/sdk/syncplay/SyncPlayPause;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/syncplay/SyncPlayPause;Ljava/lang/String;Ljava/lang/String;JILjava/lang/Object;)Lorg/jellyfin/sdk/syncplay/SyncPlayPause;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGroupId ()Ljava/lang/String;
+	public fun getMessageType ()Ljava/lang/String;
+	public final fun getPositionTicks ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/jellyfin/sdk/syncplay/SyncPlayPause$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/syncplay/SyncPlayPause$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/syncplay/SyncPlayPause;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/syncplay/SyncPlayPause;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayPause$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlaySeek : org/jellyfin/sdk/syncplay/SyncPlayMessage {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlaySeek$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;J)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()J
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;J)Lorg/jellyfin/sdk/syncplay/SyncPlaySeek;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/syncplay/SyncPlaySeek;Ljava/lang/String;Ljava/lang/String;JILjava/lang/Object;)Lorg/jellyfin/sdk/syncplay/SyncPlaySeek;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGroupId ()Ljava/lang/String;
+	public fun getMessageType ()Ljava/lang/String;
+	public final fun getPositionTicks ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/jellyfin/sdk/syncplay/SyncPlaySeek$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/syncplay/SyncPlaySeek$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/syncplay/SyncPlaySeek;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/syncplay/SyncPlaySeek;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlaySeek$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayUnpause : org/jellyfin/sdk/syncplay/SyncPlayMessage {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlayUnpause$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;J)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()J
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;J)Lorg/jellyfin/sdk/syncplay/SyncPlayUnpause;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/syncplay/SyncPlayUnpause;Ljava/lang/String;Ljava/lang/String;JILjava/lang/Object;)Lorg/jellyfin/sdk/syncplay/SyncPlayUnpause;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGroupId ()Ljava/lang/String;
+	public fun getMessageType ()Ljava/lang/String;
+	public final fun getPositionTicks ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/jellyfin/sdk/syncplay/SyncPlayUnpause$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/syncplay/SyncPlayUnpause$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/syncplay/SyncPlayUnpause;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/syncplay/SyncPlayUnpause;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayUnpause$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayUser {
+	public static final field Companion Lorg/jellyfin/sdk/syncplay/SyncPlayUser$Companion;
+	public fun <init> (Ljava/lang/String;Z)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/lang/String;Z)Lorg/jellyfin/sdk/syncplay/SyncPlayUser;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/syncplay/SyncPlayUser;Ljava/lang/String;ZILjava/lang/Object;)Lorg/jellyfin/sdk/syncplay/SyncPlayUser;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIsLeader ()Z
+	public final fun getUserId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/jellyfin/sdk/syncplay/SyncPlayUser$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/syncplay/SyncPlayUser$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/syncplay/SyncPlayUser;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/syncplay/SyncPlayUser;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayUser$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/syncplay/SyncPlayWebSocketClient {
+	public fun <init> ()V
+	public final fun connect (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun disconnect ()V
+	public final fun sendMessage (Lorg/jellyfin/sdk/syncplay/SyncPlayMessage;)V
+	public final fun setListener (Lorg/jellyfin/sdk/syncplay/SyncPlayListener;)V
 }
 

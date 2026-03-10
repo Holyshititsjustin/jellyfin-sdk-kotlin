@@ -9,6 +9,7 @@ public class SyncPlayManager(private val wsClient: SyncPlayWebSocketClient) {
     /**
      * Create a SyncPlay group. Implementation may require a REST call.
      */
+    @Suppress("UnusedParameter")
     public fun createGroup(groupId: String): Unit {
         // Implementation depends on server API, may require REST call
     }

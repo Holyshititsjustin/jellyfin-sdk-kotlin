@@ -1,3 +1,5 @@
+@file:Suppress("ConstructorParameterNaming", "PropertyName", "VariableNaming")
+
 package org.jellyfin.sdk.syncplay
 
 import kotlinx.serialization.Serializable

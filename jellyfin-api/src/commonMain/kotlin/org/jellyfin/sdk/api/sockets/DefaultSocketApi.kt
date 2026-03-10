@@ -57,7 +57,7 @@ public class DefaultSocketApi(
 		/**
 		 * The URL of the WebSocket route.
 		 */
-		private const val SOCKET_URL = "/socket"
+		private const val SOCKET_URL = "/websocket"
 
 		/**
 		 * The default interval used to ask subscription updates for.
